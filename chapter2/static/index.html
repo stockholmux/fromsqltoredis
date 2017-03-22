@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="ecommerce">
+  <head>
+    <title>RediShop</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script> <!-- include the angular library -->
+    
+    <script src="/ecommerce.js"></script>
+    <link 
+      rel="stylesheet" 
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+      crossorigin="anonymous"
+    > <!-- include Bootstrap CSS -->
+  </head>
+  <body ng-controller="ItemsCtrl">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 ng-hide" ng-hide="currentOffset === 0">
+          <button class="btn btn-block" ng-click="prevPage()">Prev Page</button>
+        </div>
+      </div>
+      <div class="row" ng-repeat="anItem in items">
+        <div class="col-sm-2">
+          <img ng-src="/images/{{anItem.productImg}}" class="img-responsive" />
+        </div>
+        <div class="col-sm-10">
+          <h2>{{anItem.name}}</h2>
+          <div>By {{companies[anItem.manufacturer].name}}</div>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>${{anItem.price}}</h3>
+              <p>Ships from {{companies[anItem.manufacturer].city}}, {{companies[anItem.manufacturer].state}}</p>
+            </div>
+            <div class="col-sm-6">
+              <p>Artist: {{anItem.artist}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+          <button class="btn btn-block" ng-click="nextPage()">Next Page</button>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
